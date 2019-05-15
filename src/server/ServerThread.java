@@ -37,13 +37,13 @@ public class ServerThread extends Thread {
 		String recievedMessage = "";
 		int blocksCounter =0;
 		int messageLength = 0;
+		// create buffer
+		byte[] buf = new byte[BUFSIZE];
 		/*
 		 * do loop until the receiving of the current message be done (if the server's
 		 * buffer-size is small, then we need more loops)
 		 */
 		do {
-			// create buffer
-			byte[] buf = new byte[BUFSIZE];
 			int readedBytes = 0;
 			try {
 				// read and save the received message in the buffer

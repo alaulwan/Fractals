@@ -17,11 +17,13 @@ public class Connection {
 	final String RemoteIP;
 	final int RemotePort;
 	final int BUFSIZE = 1024;
+	byte[] buf;
 	
 	public Connection (ServerInfo server) {
 		socket = new Socket();
 		RemoteIP = server.IP;
 		RemotePort = server.Port;
+		buf = new byte[BUFSIZE];
 		try {
 			/* Create local endpoint */
 			SocketAddress localBindPoint = new InetSocketAddress(0);
@@ -50,7 +52,6 @@ public class Connection {
 	
 	public String receiveResponse() {
 		StringBuilder receivedMessage = new StringBuilder();
-		byte[] buf = new byte[BUFSIZE];
 
 		int blockNum =0;
 		int length =0;
