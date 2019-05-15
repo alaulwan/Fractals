@@ -23,9 +23,8 @@ public abstract class Response {
 		try {
 			String length = responseText.length()+"_";
 			outStream.write(length.getBytes());
-			Thread.sleep(1000);
 			outStream.write(responseText.getBytes());
-		} catch (IOException | InterruptedException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
